@@ -15,6 +15,9 @@
     justify-content: space-between;
     padding:1.5rem 15rem;
     gap: 8rem;
+    /* position: fixed;
+    background-color: white;
+    width: 100%; */
 }
 
 .nav-list ul{
@@ -70,14 +73,16 @@
     font-size: 36px;
     color: rgb(77 71 71);
     cursor: pointer;
+    position: relative;
 }
 .nav-icons .material-symbols-outlined::after{
     content: "3";
     position: absolute;
+
     background: #ff0000;
     height: 20px;
-    top: 44px;
-    right: 236px;
+    top: 7px;
+    right: -2px;
     width: 20px;
     text-align: center;
     line-height: 18px;
@@ -87,4 +92,41 @@
     border: 1px solid #ff6600;
     font-family: sans-serif;
       
+}
+
+/* =========image slider============== */
+
+.slider-frame {
+    overflow: hidden;
+    height: 800px;
+    width: 100%;
+    position: relative;
+}
+
+.slide-images {
+    display: flex; /* Use flexbox to arrange images horizontally */
+    width: 400%; /* 4 images wide */
+    height: 100%; /* Full height of the slider-frame */
+    animation: slide_animation 60s infinite alternate; /* Change to linear */
+    animation-timing-function: ;
+}
+
+.img-container {
+    flex: 0 0 25%; /* Each image takes 25% width */
+    height: 800px;
+}
+
+.img-container img {
+    width: 100%; /* Image width set to 100% */
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes slide_animation {
+    0% {
+        transform: translateX(0%); /* Start from 0% translation */
+    }
+    100% {
+        transform: translateX(-75%); /* End at -75% translation (to the right) */
+    }
 }
