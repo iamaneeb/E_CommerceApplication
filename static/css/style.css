@@ -108,7 +108,6 @@
     width: 400%; /* 4 images wide */
     height: 100%; /* Full height of the slider-frame */
     animation: slide_animation 60s infinite alternate; /* Change to linear */
-    animation-timing-function: ;
 }
 
 .img-container {
@@ -129,4 +128,20 @@
     100% {
         transform: translateX(-75%); /* End at -75% translation (to the right) */
     }
+}
+
+
+/* ============Treading products========== */
+.treading-products{
+    margin-top: 8rem;
+}
+.treading-product{
+    text-align: center;
+
+}
+.treading-product .products{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    row-gap: 5rem;
+    padding: 5rem 20rem;
 }
