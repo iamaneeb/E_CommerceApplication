@@ -69,16 +69,18 @@
     border-radius: 50px;
     border: rgb(77 71 71) 1px solid;
   }
-.nav-icons .material-symbols-outlined{
+  .nav-icons .login-icon .material-symbols-outlined{
+    font-size: 40px;
+  }
+.nav-icons  .material-symbols-outlined{
     font-size: 36px;
     color: rgb(77 71 71);
     cursor: pointer;
     position: relative;
 }
-.nav-icons .material-symbols-outlined::after{
+.nav-icons .cart-icon .material-symbols-outlined::after{
     content: "3";
     position: absolute;
-
     background: #ff0000;
     height: 20px;
     top: 7px;
@@ -139,9 +141,101 @@
     text-align: center;
 
 }
+.heading h1{
+    font-size: 3rem;
+    font-weight: bolder;
+}
+.heading h1 span{
+    color: red;
+}
+
 .treading-product .products{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    row-gap: 5rem;
-    padding: 5rem 20rem;
+    row-gap: 4rem;
+    padding: 5rem 25rem;
+    margin-left: 4rem;
+}
+.product-img{
+    width: 550px;
+    height: 650px
+}
+.product-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+
+/* =============FOOTER ============= */
+.footer{
+    padding: 10px auto;
+    background-color: #130f1e;
+    margin-top: 10rem;
+}
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 7rem 18rem 3rem;
+}
+.col{
+    width: 25%;
+}
+.col h4{
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    position: relative;
+    text-transform: capitalize;
+    
+}
+.col h4::before{
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 50px;
+    left: 0;
+    bottom: -1rem;
+    background-color: #ff702a;
+
+
+}
+.col ul li{
+    margin-bottom: 1.3rem;
+}
+.col ul li a{
+    color: #9897a9;
+    font-size: 1.1rem;
+    display: block;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .4s ease;
+}
+.col ul li a:hover{
+    color: #fff;
+    transform: translateX(-12px);
+}
+.socio{
+    width: 220px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.socio a{
+    padding: 0.8rem 0.8rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.8rem;
+
+}
+.socio a i{
+    font-size: 1.4rem;
+    color: #9897a9;
+    transition: all 300ms ease;
+}
+.socio a i:hover{
+    color: #fff;
+    transform: scale(1.5);
 }
