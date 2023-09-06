@@ -9,15 +9,15 @@
             <h1>Trending <span>Products</span></h1>
             </div>
             <div class="products">
-                <div class="product-img">
+               <a href="{% url 'hoodies' %}"> <div class="product-img">
                     <img src="{% static 'images/hoodies.jpg' %}" alt="">
-                </div>
-                <div class="product-img">
+                </div></a>
+               <a href="{% url 'hoodies' %}"> <div class="product-img">
                     <img src="{%static 'images/hobobags.jpg'%}" alt="">
-                </div>
-                <div class="product-img">
+                </div></a>
+               <a href="{% url 'hoodies' %}"><div class="product-img">
                     <img src="{%static 'images/totebages.jpg'%}" alt="">
-                </div>
+                </div></a> 
             </div>
             
         </div>

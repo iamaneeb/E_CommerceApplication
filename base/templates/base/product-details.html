@@ -1,0 +1,25 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<img id="featured" src="{% static 'images/hoodie1.jpg' %}" alt="">
+<div id="slide-wrapper">
+    <i id="button-left" class="fa-solid fa-circle-arrow-left arrow"></i>
+    <div id="slider">
+        <img class="thumbnail active" src="{%static 'images/hoodie1.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
+        <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="">
+        
+    </div>
+    <i id="button-right" class="fa-solid fa-circle-arrow-right arrow"></i>
+</div>
+
+
+{% endblock content %}
