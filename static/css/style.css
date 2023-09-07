@@ -301,7 +301,7 @@
 /* =========product-details=========== */
 
 #featured{
-    max-width: 500px;
+    max-width: 550px;
     max-height: 600px;
     object-fit: cover;
     cursor: pointer;
@@ -315,15 +315,18 @@
     cursor: pointer;
     border: 2px black solid;
     margin: 5px;
+    transition: all .3s ease;
 }
 .thumbnail:hover{
     opacity: 1;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .active{
     opacity: 1;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 #slide-wrapper{
-    max-width: 500px;
+    max-width: 550px;
     display: flex;
     min-height: 100px;
     align-items: center;
@@ -339,9 +342,43 @@
     cursor: pointer;
     transition: .3s;
     font-size: 2.3rem;
+    transition: all .3s ease;
+
 }
 .arrow:hover{
     opacity: .5;
     font-size: 2.5rem;
 
+}
+.product-details-container{
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin: 6rem;
+}
+.product-details{
+    width: 700px;
+}
+.product-details h1{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.product-details p{
+    margin-top: 2rem;
+    font-weight: 500;
+}
+.product-details small{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.product-details button{
+    margin-top: 1rem;
+    background-color: black;
+    border: none;
+    color: white;
+}
+.product-details button:hover{
+    background-color: #413939;
+    color: white;
+    border: none;
 }

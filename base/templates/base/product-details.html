@@ -1,25 +1,41 @@
-{% extends 'base/main.html' %}
-{% load static %}
+{% extends 'base/main.html' %} 
+{% load static %} 
 {% block content %}
-
-<img id="featured" src="{% static 'images/hoodie1.jpg' %}" alt="">
-<div id="slide-wrapper">
-    <i id="button-left" class="fa-solid fa-circle-arrow-left arrow"></i>
-    <div id="slider">
-        <img class="thumbnail active" src="{%static 'images/hoodie1.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="">
-        <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="">
-        
+<div class="product-details-container">
+  <div class="product-details-container">
+    <div class="product-items">
+        <img id="featured" src="{% static 'images/hoodie1.jpg' %}" alt="" />
+      <div id="slide-wrapper">
+        <i id="button-left" class="fa-solid fa-circle-arrow-left arrow"></i>
+        <div id="slider">
+          <img
+            class="thumbnail active"
+            src="{%static 'images/hoodie1.jpg'%}"
+            alt=""
+          />
+          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
+          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
+          <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="" />
+          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
+          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
+          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
+          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
+          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
+          <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="" />
+        </div>
+        <i id="button-right" class="fa-solid fa-circle-arrow-right arrow"></i>
+      </div>
     </div>
-    <i id="button-right" class="fa-solid fa-circle-arrow-right arrow"></i>
+    <div class="product-details">
+      <h1>forest green hoodie</h1>
+      <hr>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem tempore accusantium, delectus et cumque veniam velit illum eveniet, earum quasi odit consequuntur enim quibusdam. Officiis harum ipsam exercitationem sint alias.</p>
+      <small>₹859</small><br>
+      <button type="button" class="btn">Add to Cart</button>
+      <button type="button" class="btn">Buy Now</button>
+
+    </div>
+    
+  </div>
 </div>
-
-
 {% endblock content %}
