@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Category,Account
+from .models import Category,Account,Product
 
 
 class AccountAdmin(UserAdmin):
@@ -19,6 +19,14 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('category_name',)}
     list_display = ('category_name','slug')
 
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('product_name','newprice','stock','category','modified_date','is_available')
+    prepopulated_fields = {'slug':('product_name',)}
+
+
+
 # Register your models here.
 admin.site.register(Category,CategoryAdmin)
-admin.site.register(Account,AccountAdmin) 
+admin.site.register(Account,AccountAdmin)
+admin.site.register(Product,ProductAdmin) 
