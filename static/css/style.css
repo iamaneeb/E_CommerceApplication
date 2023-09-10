@@ -251,16 +251,14 @@
     transform: scale(1.5);
 }
 
-/* =========Hoodies==================== */
-.hoodies-container{
+/* =========products==================== */
+.product-container{
     margin: 8rem 15rem;
-}
-
-.items{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    row-gap: 10rem;
+    row-gap: 5rem;
 }
+
 .items a:hover{
     color: black;
     text-decoration: none;

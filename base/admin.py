@@ -21,7 +21,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('product_name','newprice','stock','category','modified_date','is_available')
+    list_display = ('product_name','newprice','category','created_date')
     prepopulated_fields = {'slug':('product_name',)}
 
 

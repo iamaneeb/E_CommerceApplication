@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %} {% load static %} {% block content %}
+<div class="product-container">
+  {% for product in products %}
+  <div class="items">
+    <a href="{% url 'product_details' %}">
+      <div class="item-img">
+        <img src="{{product.prod_img.url}}" alt="" />
+      </div>
+        <div class="item-details">
+          <p>
+            {{product.product_name}}<br />
+            <small
+              ><span>₹{{product.oldprice}}</span>₹{{product.newprice}}</small
+            >
+          </p>
+        </div>
+      </a>
+      </div>
+  {% endfor %}
+</div>
+{% include 'base/footer.html' %} {% endblock content %}

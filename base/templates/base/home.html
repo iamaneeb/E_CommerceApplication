@@ -9,15 +9,11 @@
             <h1>Trending <span>Products</span></h1>
             </div>
             <div class="products">
-               <a href="{% url 'hoodies' %}"> <div class="product-img">
-                    <img src="{% static 'images/hoodies.jpg' %}" alt="">
+                {% for category in categories  %}
+               <a href="{{category.slug}}"> <div class="product-img">
+                    <img src="{{category.cat_image.url}}" alt="">
                 </div></a>
-               <a href="{% url 'hoodies' %}"> <div class="product-img">
-                    <img src="{%static 'images/hobobags.jpg'%}" alt="">
-                </div></a>
-               <a href="{% url 'hoodies' %}"><div class="product-img">
-                    <img src="{%static 'images/totebages.jpg'%}" alt="">
-                </div></a> 
+                {% endfor %}
             </div>
             
         </div>
