@@ -4,8 +4,10 @@
 <div class="product-details-container">
   <div class="product-details-container">
     <div class="product-items">
-        <img id="featured" src="{% static 'images/hoodie1.jpg' %}" alt="" />
-      <div id="slide-wrapper">
+        <div class="feature_image">
+          <img id="featured" src="{% static 'images/hoodie1.jpg' %}" alt="" />
+        </div>
+       <div id="slide-wrapper">
         <i id="button-left" class="fa-solid fa-circle-arrow-left arrow"></i>
         <div id="slider">
           <img
@@ -24,30 +26,25 @@
           <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="" />
         </div>
         <i id="button-right" class="fa-solid fa-circle-arrow-right arrow"></i>
-      </div>
+      </div> 
     </div>
     <div class="product-details">
       <h1>forest green hoodie</h1>
       <hr>
       <p>Introducing our new versatile hobo bag in a captivating juniper green color. Crafted from soft puffer material, this unisex bag offers the perfect blend of comfort and style.
 
-        Key Features:
-        
-        *Size: L=27", W=8" - ample space to carry all your essentials.
-        
-        *Generous 10-liter capacity, ensuring you have room for everything you need.
-        
-        *Adjustable strap for a customized fit, allowing you to wear it comfortably as a shoulder bag or crossbody.
-        
-        *Made from soft puffer material, providing a plush feel and adding a touch of luxury to your ensemble.
-        
-        *Versatile design that complements any outfit, making it ideal for various occasions.</p>
+        <p>Key Features:</p>
+      <ul>
+        <li>Size: L=27", W=8" - ample space to carry all your essentials.</li>
+        <li>Generous 10-liter capacity, ensuring you have room for everything you need.</li>
+        <li>Adjustable strap for a customized fit, allowing you to wear it comfortably as a shoulder bag or crossbody.</li>
+        <li>Made from soft puffer material, providing a plush feel and adding a touch of luxury to your ensemble.</li>
+        <li>Versatile design that complements any outfit, making it ideal for various occasions.</p></ul>
+        </ul>
       <small>₹859</small><br>
       <button type="button" class="btn">Add to Cart</button>
       <button type="button" class="btn">Buy Now</button>
-
     </div>
-    
   </div>
 </div>
 {% endblock content %}
