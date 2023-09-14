@@ -99,3 +99,28 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_name
+
+
+class ProductDetails(models.Model):
+    availability = (('In Stock','In Stock'),('Out of Stock','Out of Stock'))
+    description = models.TextField()
+    feature = models.TextField(blank=True)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    stock = models.IntegerField()
+    is_available = models.CharField(choices=availability,null=True,max_length=100)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+
+    def __str__(self):
+        return self.product.product_name
+
+class Image(models.Model):
+    product = models.ForeignKey(ProductDetails,on_delete=models.CASCADE)
+    images = models.ImageField(upload_to='photos/products')
+
+
+    def __str__(self):
+        return self.product.product.product_name
+
+

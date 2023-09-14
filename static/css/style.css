@@ -377,6 +377,13 @@
     margin-top: 2rem;
     font-weight: 500;
 }
+.product-container p .desc{
+    margin-bottom:2.5rem;
+    
+}
+.stock-availability{
+    color: green;
+}
 .product-details small{
     font-size: 1.2rem;
     font-weight: 500;
