@@ -103,6 +103,6 @@ class Product(models.Model):
 
     
     def get_url(self):
-        return reverse('product_details',args=[self.product.category.slug,self.product.slug])
+        return reverse('product_details',args=[self.category.slug,self.slug])
 
 

@@ -8,6 +8,10 @@
     color: black;
     list-style: none;
     text-decoration: none;
+    
+}
+body{
+    background-color: #d49a9a;
 }
 
 /* ==============Header=================== */
@@ -182,7 +186,8 @@
 /* =============FOOTER ============= */
 .footer{
     padding: 10px auto;
-    background-color: #130f1e;
+    /* background-color: #130f1e; */
+    background-color: #290909;
     margin-top: 10rem;
 }
 .main{

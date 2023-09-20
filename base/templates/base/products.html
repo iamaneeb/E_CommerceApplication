@@ -2,7 +2,7 @@
 <div class="product-container">
   {% for product in products %}
   <div class="items">
-    <a href="{% url 'product_details' %}">
+    <a href="{{ product.get_url }}">
       <div class="item-img">
         <img src="{{product.prod_img.url}}" alt="" />
       </div>
