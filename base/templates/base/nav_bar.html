@@ -20,9 +20,12 @@
                     <input type="text" class="form-control" placeholder="Search COCAINJESUS">
                   </div>
             </form>
-            <div class="cart-icon"> <span class="material-symbols-outlined">
-                shopping_bag
-            </span></div>
+            <a href="{% url 'cart' %}">
+                <div class="cart-icon"> <span class="material-symbols-outlined">
+                    shopping_bag
+                </span></div>
+            </a>
+            
            <div class="login-icon"><span class="material-symbols-outlined">
                 person
                 </span></div>

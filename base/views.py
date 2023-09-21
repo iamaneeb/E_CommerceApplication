@@ -22,3 +22,6 @@ def Products(request,category_slug=None):
 def Productdetails(request,product_slug,category_slug):
     pd = Product.objects.get(slug=product_slug)
     return render(request,'base/product-details.html',{"pd":pd}) 
+
+def CartItem(request):
+    return render(request,'base/cart.html')
