@@ -1,149 +1,128 @@
-{% extends "base/main.html" %}
-{% block content %}
-<section class="cart h-100  h-custom" style="border:none">
-  <div class="container h-100 py-5">
+{% extends "base/main.html" %} {% block content %}
+<section class="h-100 h-custom" >
+  <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card-box card shopping-cart" style="border-radius: 15px;">
-          <div class="card-body text-black">
-
-            <div class="row">
-              
-              <div class="head col-lg-6 px-5 py-4">
-               <a href="{% url 'home' %}"><span class="material-symbols-outlined">
-                  arrow_back
-                  </span></a> 
+      <div class="col-12">
+        <div
+          class="card card-registration card-registration-2"
+          style="border-radius: 15px"
+        >
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-5"
+                  >
+                    <h2 class=" pt-2 text-center fw-bold text-uppercase">Your products</h2>
+                    <h6 class="mb-0 text-muted">{{len}} items</h6>
+                  </div>
+                  <hr class="my-4" />
+                  {% for cart_item in cart_items %}
                 
-                <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your products</h3>
-
-                <div class="d-flex align-items-center mb-5">
-                  <div class="flex-shrink-0">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
-                      class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                    <h5 class="text-primary">Samsung Galaxy M11 64GB</h5>
-                    <h6 style="color: #9e9e9e;">Color: white</h6>
-                    <div class="d-flex align-items-center">
-                      <p class="fw-bold mb-0 me-5 pe-3">799$</p>
-                      <div class="def-number-input number-input safari_only">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                          class="minus"></button>
-                        <input class="quantity fw-bold text-black" min="0" name="quantity" value="1"
-                          type="number">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                          class="plus"></button>
-                      </div>
+                  <div
+                    class="row mb-4 d-flex justify-content-between align-items-center"
+                  >
+                    <div class="img-box col-md-2 col-lg-2 col-xl-2">
+                      <img
+                        src="{{cart_item.product.prod_img.url}}"
+                        class="img-fluid rounded-3"
+                        alt="Cotton T-shirt"
+                      />
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                      <h6 class="text-black mb-0">
+                        {{cart_item.product.product_name}}
+                      </h6>
+                    </div>
+                    <div class="cart-quantity_btn">
+                      <button class="btn btn-link px-2"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                      <input type="number"  id="form1" min="0" name="quantity" value="1"> 
+                      <button class="btn btn-link px-2"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    </div> 
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                      <h6 class="mb-0">₹{{cart_item.product.newprice}}</h6>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                      <a href="#!" class="text-muted"
+                        ><i class="fas fa-times"></i
+                      ></a>
                     </div>
                   </div>
-                </div>
-
-                <div class="d-flex align-items-center mb-5">
-                  <div class="flex-shrink-0">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/6.webp"
-                      class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                    <h5 class="text-primary">Headphones Bose 35 II</h5>
-                    <h6 style="color: #9e9e9e;">Color: Red</h6>
-                    <div class="d-flex align-items-center">
-                      <p class="fw-bold mb-0 me-5 pe-3">239$</p>
-                      <div class="def-number-input number-input safari_only">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                          class="minus"></button>
-                        <input class="quantity fw-bold text-black" min="0" name="quantity" value="1"
-                          type="number">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                          class="plus"></button>
-                      </div>
-                    </div>
+                  <hr class="my-4" />
+                  {% endfor %}
+                  <div class="back pt-5">
+                    <h6 class="mb-0">
+                      <a href="{% url 'home' %}" class="text-body"
+                        >
+                        <div><i class="fas fa-long-arrow-alt-left me-2"></i></div>
+                       <div>Back to shop</div> 
+                        
+                        </a
+                      >
+                    </h6>
                   </div>
                 </div>
-
-                <div class="d-flex align-items-center mb-5">
-                  <div class="flex-shrink-0">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                      class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
-                    <h5 class="text-primary">iPad 9.7 6-gen WiFi 32GB</h5>
-                    <h6 style="color: #9e9e9e;">Color: rose pink</h6>
-                    <div class="d-flex align-items-center">
-                      <p class="fw-bold mb-0 me-5 pe-3">659$</p>
-                      <div class="def-number-input number-input safari_only">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                          class="minus"></button>
-                        <input class="quantity fw-bold text-black" min="0" name="quantity" value="2"
-                          type="number">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                          class="plus"></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
-
-                <div class="d-flex justify-content-between px-x">
-                  <p class="fw-bold">Discount:</p>
-                  <p class="fw-bold">95$</p>
-                </div>
-                <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
-                  <h5 class="fw-bold mb-0">Total:</h5>
-                  <h5 class="fw-bold mb-0">2261$</h5>
-                </div>
-
               </div>
-              <div class="col-lg-6 px-5 py-4">
+              <div class="col-lg-4 bg-grey">
+                <div class="p-5">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                  <hr class="my-4" />
 
-                <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
-
-                <form class="mb-5">
-
-                  <div class="form-outline mb-5">
-                    <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                      value="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                    <label class="form-label" for="typeText">Card Number</label>
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase">items 3</h5>
+                    <h5>€ 132.00</h5>
                   </div>
 
-                  <div class="form-outline mb-5">
-                    <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                      value="John Smith" />
-                    <label class="form-label" for="typeName">Name on card</label>
+                  <h5 class="text-uppercase mb-3">Shipping</h5>
+
+                  <div class="mb-4 pb-2">
+                    <select class="select">
+                      <option value="1">Standard-Delivery- €5.00</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                      <option value="4">Four</option>
+                    </select>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-6 mb-5">
-                      <div class="form-outline">
-                        <input type="text" id="typeExp" class="form-control form-control-lg" value="01/22"
-                          size="7" id="exp" minlength="7" maxlength="7" />
-                        <label class="form-label" for="typeExp">Expiration</label>
-                      </div>
+                  <h5 class="text-uppercase mb-3">Give code</h5>
+
+                  <div class="mb-5">
+                    <div class="form-outline">
+                      <input
+                        type="text"
+                        id="form3Examplea2"
+                        class="form-control form-control-lg"
+                      />
+                      <label class="form-label" for="form3Examplea2"
+                        >Enter your code</label
+                      >
                     </div>
-                    <div class="col-md-6 mb-5">
-                      <div class="form-outline">
-                        <input type="password" id="typeText" class="form-control form-control-lg"
-                          value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                        <label class="form-label" for="typeText">Cvv</label>
-                      </div>
-                    </div>
                   </div>
 
-                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit <a
-                      href="#!">obcaecati sapiente</a>.</p>
+                  <hr class="my-4" />
 
-                  <button type="button" class="btn btn-primary btn-block btn-lg">Buy now</button>
+                  <div class="d-flex justify-content-between mb-5">
+                    <h5 class="text-uppercase">Total price</h5>
+                    <h5>€ 137.00</h5>
+                  </div>
 
-           
-
-                </form>
-
+                  <button
+                    type="button"
+                    class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark"
+                  >
+                    Register
+                  </button>
+                </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

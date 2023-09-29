@@ -52,5 +52,23 @@ def add_cart(request,product_id):
     return redirect('cart')
 
 
-def Cart_item(request):
-    return render(request,'base/cart.html')
+def Cart_item(request,total=0,quantity=0,cart_items=None):
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        for cart_item in cart_items:
+            total += (cart_item.product.newprice * cart_item.quantity)  
+            quantity += cart_item.quantity
+    except Cart.DoesNotExist:
+        pass          
+    except CartItem.DoesNotExist:
+        pass
+    cart_length = cart_items.count()
+    print(cart_length)
+    context = {
+        'total' : total,
+        'quantity':quantity,
+        'cart_items':cart_items,
+        'len' :cart_length
+    }
+    return render(request,'base/cart.html',context)
