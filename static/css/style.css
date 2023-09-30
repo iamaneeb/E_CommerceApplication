@@ -464,3 +464,16 @@ body{
     border-bottom-right-radius: 16px;
     }
     }
+
+
+    .empty-cart{
+        margin: 3rem 15rem;
+        text-align: center;
+    }
+    .empty-cart h2{
+        font-weight: 600;
+        margin-top: 3rem;
+    }
+    .empty-cart a button{
+        margin-top: 1.3rem;
+    }

@@ -51,6 +51,24 @@ def add_cart(request,product_id):
         cart_item.save()
     return redirect('cart')
 
+def remove_cart(request,product_id):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    product = get_object_or_404(Product, id = product_id)
+    cart_items = CartItem.objects.get(product=product,cart=cart)
+    if cart_items.quantity > 1:
+        cart_items.quantity -= 1
+        cart_items.save()
+    else:
+        cart_items.delete()
+    return redirect('cart')    
+
+def delete_cart(request,product_id):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    product = get_object_or_404(Product, id = product_id)
+    cart_items = CartItem.objects.get(product=product,cart=cart)
+    cart_items.delete()
+    return redirect('cart')
+
 
 def Cart_item(request,total=0,quantity=0,cart_items=None):
     try:
