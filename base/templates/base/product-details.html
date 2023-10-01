@@ -40,7 +40,11 @@
        <p class="stock-availability">{{pd.is_available}}</p> 
           
           <small>₹{{pd.newprice}}</small><br>
+      {% if cart_prod %}
+      <a href="{% url 'cart'%}"><button type="button" class="btn">Added to Cart</button></a>
+      {% else %}
       <a href="{% url 'add-cart' pd.id %}"><button type="button" class="btn">Add to Cart</button></a>
+      {% endif %}
       <button type="button" class="btn">Buy Now</button>
     </div>
   </div>

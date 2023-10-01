@@ -95,7 +95,7 @@ class Product(models.Model):
     modified_date = models.DateTimeField(auto_now=True)
     availability = (('In Stock','In Stock'),('Out of Stock','Out of Stock'))
     description = models.TextField(null=True)
-    feature = models.TextField(blank=True)
+    feature = models.TextField(blank =True)
     is_available = models.CharField(choices=availability,null=True,max_length=100)
 
     def __str__(self):

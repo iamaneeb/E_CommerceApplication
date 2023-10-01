@@ -93,8 +93,7 @@ body{
     cursor: pointer;
     position: relative;
 }
-.nav-icons .cart-icon .material-symbols-outlined::after{
-    content: "3";
+.nav-icons .cart-icon .cart-no{
     position: absolute;
     background: #ff0000;
     height: 20px;
@@ -476,4 +475,7 @@ body{
     }
     .empty-cart a button{
         margin-top: 1.3rem;
+    }
+    .cart-section a:hover{
+        text-decoration: none;
     }

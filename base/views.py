@@ -5,7 +5,10 @@ from .models import Category,Product,Cart,CartItem
 # Create your views here.
 def Home(request):
     categories = Category.objects.all()
-    context = {"categories":categories}
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_length = cart_items.count()
+    context = {"categories":categories,"len":cart_length}
     return render(request,'base/home.html',context)
 
 def Products(request,category_slug=None):
@@ -16,12 +19,19 @@ def Products(request,category_slug=None):
         products = Product.objects.filter(category=categries)
     else:    
         products = Product.objects.all()
-    context = {"products":products}
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_length = cart_items.count()    
+    context = {"products":products,"len":cart_length}
     return render(request,'base/products.html',context)
 
 def Productdetails(request,product_slug,category_slug):
     pd = Product.objects.get(slug=product_slug)
-    return render(request,'base/product-details.html',{"pd":pd}) 
+    cart_prod = CartItem.objects.filter(cart__cart_id=_cart_id(request),product=pd).exists()
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_length = cart_items.count()
+    return render(request,'base/product-details.html',{"pd":pd,"cart_prod":cart_prod,"len":cart_length}) 
 
 
 def _cart_id(request):
