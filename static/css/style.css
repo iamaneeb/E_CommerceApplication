@@ -22,8 +22,8 @@ body{
     padding:1.5rem 15rem;
     gap: 8rem;
     /* position: fixed;
-    background-color: white;
-    width: 100%; */
+   ? background-color: white;
+    width: 100%; */ */
 }
 .header-container a{
     text-decoration: none;
@@ -385,9 +385,13 @@ body{
     margin-bottom:2.5rem;
     
 }
-.stock-availability{
+.green-text{
     color: green;
 }
+.red-text{
+    color: red;
+}
+
 .product-details small{
     font-size: 1.2rem;
     font-weight: 500;

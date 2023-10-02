@@ -37,15 +37,22 @@
       <ul>
         <li>{{pd.feature}}</li>
         </ul> 
-       <p class="stock-availability">{{pd.is_available}}</p> 
+        {% if pd.is_available == 'In Stock' %}
+        <p class="green-text">{{ pd.is_available }}</p>
+        {% elif pd.is_available == 'Out of Stock' %}
+        <p class="red-text">{{ pd.is_available }}</p>
+        {% endif %}
+       {% comment %} <p class="stock-availability">{{pd.is_available}}</p>  {% endcomment %}
           
           <small>₹{{pd.newprice}}</small><br>
-      {% if cart_prod %}
-      <a href="{% url 'cart'%}"><button type="button" class="btn">Added to Cart</button></a>
-      {% else %}
-      <a href="{% url 'add-cart' pd.id %}"><button type="button" class="btn">Add to Cart</button></a>
-      {% endif %}
+      {% if pd.is_available == 'In Stock' %}
+            {% if cart_prod %}
+                  <a href="{% url 'cart'%}"><button type="button" class="btn">Added to Cart</button></a>
+            {% else %}
+                  <a href="{% url 'add-cart' pd.id %}"><button type="button" class="btn">Add to Cart</button></a>
+            {% endif %}
       <button type="button" class="btn">Buy Now</button>
+      {% endif %}
     </div>
   </div>
 </div>

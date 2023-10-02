@@ -1,13 +1,12 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Category,Product,Cart,CartItem
+from .sideFun import cartLength
 
 
 # Create your views here.
 def Home(request):
     categories = Category.objects.all()
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-    cart_length = cart_items.count()
+    cart_length= cartLength(request)
     context = {"categories":categories,"len":cart_length}
     return render(request,'base/home.html',context)
 
@@ -18,22 +17,18 @@ def Products(request,category_slug=None):
         categries = get_object_or_404(Category,slug = category_slug)
         products = Product.objects.filter(category=categries)
     else:    
-        products = Product.objects.all()
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-    cart_length = cart_items.count()    
+        products = Product.objects.all()    
+    cart_length= cartLength(request)    
     context = {"products":products,"len":cart_length}
     return render(request,'base/products.html',context)
 
 def Productdetails(request,product_slug,category_slug):
     pd = Product.objects.get(slug=product_slug)
     cart_prod = CartItem.objects.filter(cart__cart_id=_cart_id(request),product=pd).exists()
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-    cart_length = cart_items.count()
+    cart_length= cartLength(request)
     return render(request,'base/product-details.html',{"pd":pd,"cart_prod":cart_prod,"len":cart_length}) 
 
-
+######################################CART############################################
 def _cart_id(request):
     cart = request.session.session_key
     if not cart:
@@ -60,6 +55,7 @@ def add_cart(request,product_id):
         )
         cart_item.save()
     return redirect('cart')
+
 
 def remove_cart(request,product_id):
     cart = Cart.objects.get(cart_id=_cart_id(request))
@@ -92,7 +88,7 @@ def Cart_item(request,total=0,quantity=0,cart_items=None):
     except CartItem.DoesNotExist:
         pass
     cart_length = cart_items.count()
-    print(cart_length)
+    
     context = {
         'total' : total,
         'quantity':quantity,
