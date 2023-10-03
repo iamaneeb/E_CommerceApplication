@@ -1,14 +1,17 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Category,Product,Cart,CartItem
 from .sideFun import cartLength
+from django.http import HttpResponse
+from django.db.models import Q
 
 
 # Create your views here.
 def Home(request):
     categories = Category.objects.all()
-    cart_length= cartLength(request)
-    context = {"categories":categories,"len":cart_length}
-    return render(request,'base/home.html',context)
+    cart_length = cartLength(request)
+    context = {"categories": categories, "len": cart_length,}
+    return render(request, 'base/home.html', context)
+
 
 def Products(request,category_slug=None):
     products = None
@@ -96,3 +99,16 @@ def Cart_item(request,total=0,quantity=0,cart_items=None):
         'len' :cart_length
     }
     return render(request,'base/cart.html',context)
+
+################################################################################
+
+def Search(request):
+    cart_length= cartLength(request)  
+    q = request.GET.get('q')  # Use .get() method to retrieve 'q' parameter
+
+    if q:
+        products = Product.objects.order_by('-created_date').filter(Q(brand__icontains=q) | Q(product_name__icontains=q) | Q(description__icontains=q) | Q(newprice__icontains=q))
+    else:
+        products = Product.objects.order_by('-created_date')
+
+    return render(request,'base/products.html',{'products':products,"len":cart_length})

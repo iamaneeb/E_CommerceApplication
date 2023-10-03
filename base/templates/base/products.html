@@ -1,5 +1,6 @@
 {% extends 'base/main.html' %} {% load static %} {% block content %}
 <div class="product-container">
+{% if products %}
   {% for product in products %}
   <div class="items">
     <a href="{{ product.get_url }}">
@@ -17,5 +18,10 @@
       </a>
       </div>
   {% endfor %}
+  {% else %}
+  <div class="false-search">
+    <h1>no result found, please try again</h1>
+  </div>
+{% endif %} 
 </div>
 {% include 'base/footer.html' %} {% endblock content %}

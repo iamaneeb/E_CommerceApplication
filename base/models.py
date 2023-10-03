@@ -91,6 +91,7 @@ class Product(models.Model):
     newprice = models.IntegerField()
     prod_img = models.ImageField(upload_to='photos/products')
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    brand = models.CharField(default='COCAINJESUS',null=True,max_length=100)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
     availability = (('In Stock','In Stock'),('Out of Stock','Out of Stock'))

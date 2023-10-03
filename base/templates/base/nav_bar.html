@@ -14,10 +14,10 @@
             </ul>
         </div>
         <div class="nav-icons">
-            <form>
+            <form action="{% url 'search' %}" method='GET'>
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" class="form-control" placeholder="Search COCAINJESUS">
+                    <input type="text" name='q' class="form-control" placeholder="Search COCAINJESUS">
                   </div>
             </form>
             <a href="{% url 'cart' %}">
@@ -27,9 +27,9 @@
                 </span></div>
             </a>
             
-           <div class="login-icon"><span class="material-symbols-outlined">
+          <a href="#"> <div class="login-icon"><span class="material-symbols-outlined">
                 person
-                </span></div>
+                </span></div></a>
             
         </div>
     </div>
