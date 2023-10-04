@@ -1,9 +1,9 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Category,Product,Cart,CartItem
+from .models import Category,Product,Cart,CartItem,Account
 from .sideFun import cartLength
 from django.http import HttpResponse
 from django.db.models import Q
-
+from .form import RegistrationForm
 
 # Create your views here.
 def Home(request):
@@ -112,3 +112,30 @@ def Search(request):
         products = Product.objects.order_by('-created_date')
 
     return render(request,'base/products.html',{'products':products,"len":cart_length})
+
+
+def Register(request):
+    cart_length= cartLength(request)
+    if request.method == "POST":
+        form=RegistrationForm(request.POST)
+        if form.is_valid():
+            first_name =form.cleaned_data['first_name']
+            last_name =form.cleaned_data['last_name']    
+            username =form.cleaned_data['username']    
+            email =form.cleaned_data['email']    
+            phone_number =form.cleaned_data['phone_number']    
+            password =form.cleaned_data['password']    
+            user = Account.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password)
+            user.phone_number=phone_number
+            user.save()
+            return redirect('register')
+    else:        
+        form = RegistrationForm()
+    context = {"form":form,"len":cart_length}
+    return render(request,'base/register.html',context)
+
+
+def Login(request):
+    cart_length= cartLength(request)  
+    context = {"len":cart_length}
+    return render(request,'base/login.html',context)
