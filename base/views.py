@@ -128,7 +128,7 @@ def Register(request):
             user = Account.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password)
             user.phone_number=phone_number
             user.save()
-            return redirect('register')
+            return redirect('home')
     else:        
         form = RegistrationForm()
     context = {"form":form,"len":cart_length}

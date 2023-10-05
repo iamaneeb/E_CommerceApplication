@@ -525,3 +525,15 @@ top: 13px;
 .register-section .card a{
     text-decoration: underline;
 }
+.nonfield li:first-child{
+    color: red;
+    position: absolute;
+    bottom: 103px;
+    font-size: 14px;
+}
+.errorlist  li{
+    color: red;
+    position: absolute;
+    bottom: 94px;
+    font-size: 13px;
+}
