@@ -537,3 +537,42 @@ top: 13px;
     bottom: 94px;
     font-size: 13px;
 }
+
+/* login-form */
+.login-section .card{
+    transition: all .4s ease;
+    margin-bottom: 13rem;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+}
+.login-section .card:hover{
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+.login-section .row {
+    flex-direction: column;
+}
+.login-section .form-control-lg{
+    width: 33.4rem;
+}
+.login-section a{
+    text-decoration: underline;
+}
+
+.form-outline .lab{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    
+}
+.lab .forget-pass{
+    color: #0069d9;
+    position: absolute;
+    right: -276px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+.lab .forget-pass:hover{
+    transition: all .2s ease;
+    text-decoration: underline;
+    color: blue;
+}

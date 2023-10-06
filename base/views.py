@@ -4,6 +4,7 @@ from .sideFun import cartLength
 from django.http import HttpResponse
 from django.db.models import Q
 from .form import RegistrationForm
+from django.contrib import auth,messages
 
 # Create your views here.
 def Home(request):
@@ -137,5 +138,15 @@ def Register(request):
 
 def Login(request):
     cart_length= cartLength(request)  
+    if request.method == "POST":
+        email=request.POST["email"]
+        password = request.POST["password"]
+        user = auth.authenticate(email=email,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect('home')
+        else:
+            messages.error(request,"Invalid login credentials")
+            return redirect('login')
     context = {"len":cart_length}
     return render(request,'base/login.html',context)
