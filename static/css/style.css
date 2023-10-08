@@ -576,3 +576,6 @@ top: 13px;
     text-decoration: underline;
     color: blue;
 }
+#message.hide_message{
+    display: none;
+}

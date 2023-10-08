@@ -7,6 +7,7 @@
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">SIGN UP</h3>
+                  {% include "base/error-message.html" %}
                   <form action="{% url 'register' %}" method="POST">
                     {% csrf_token %}
                     <div class="row">

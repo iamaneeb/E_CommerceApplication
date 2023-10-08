@@ -15,16 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use the database to store sessions
-SESSION_COOKIE_NAME = 'sessionid'  # Name of the session cookie
-SESSION_COOKIE_AGE = 1209600  # Session cookie age in seconds (2 weeks)
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Session doesn't expire when the browser is closed
-SESSION_SAVE_EVERY_REQUEST = True  # Save the session on every request
 
-# Database for session storage (you can change this to your preferred database)
-SESSION_COOKIE_SECURE = False  # Set to True for HTTPS connections
-SESSION_COOKIE_HTTPONLY = True  # Restrict JavaScript access to cookies for security
-SESSION_COOKIE_SAMESITE = 'Lax'  # Add this for
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -72,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'base.context_processors.counter',
             ],
         },
     },
@@ -138,5 +130,10 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

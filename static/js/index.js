@@ -35,3 +35,12 @@ Buttonright.addEventListener('click',function(){
 
 //     // Now you can submit the form
 //   });
+
+// setTimeout(function() {
+//     $('#message').fadeIn('slow')
+// }, 4000);
+
+function Hide(){
+    var mess =document.getElementById('message').classList;
+    mess.add('hide_message');
+}

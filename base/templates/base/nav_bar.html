@@ -7,9 +7,8 @@
         <div class="nav-list">
             <ul>
                 <a href="{% url 'home' %}"><li>HOME</li></a>
-                <li>MEN</li>
-                <li>WOMEN</li>
-                <li>CONTACT</li>
+                <a href="{% url 'store' %}"><li>STORE</li></a> 
+                <a href="https://www.instagram.com/cocainjesus_/"><li>CONTACT</li></a>
              
             </ul>
         </div>
@@ -23,7 +22,7 @@
             <a href="{% url 'cart' %}">
                 <div class="cart-icon"> <span class="material-symbols-outlined">
                     shopping_bag
-                    <span class="cart-no">{{len}}</span>
+                    <span class="cart-no">{{cart_counter}}</span>
                 </span></div>
             </a>
             

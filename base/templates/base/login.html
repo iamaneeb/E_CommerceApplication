@@ -1,5 +1,6 @@
 {% extends "base/main.html" %}
 {% block content %}
+
     <section class="login-section vh-100 gradient-custom">
         <div class="container py-5 h-100">
           <div class="row justify-content-center align-items-center h-100">
@@ -7,6 +8,7 @@
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">SIGN IN</h3>
+                  {% include "base/error-message.html" %}
                   <form action="{% url 'login' %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
@@ -26,7 +28,7 @@
                         <div class="form-outline">
                             <input type="password" name='password' id="Password" class="form-control form-control-lg" />
                             <div class="lab">
-                                    <label class="form-label" for="password">Password</label>
+                                    <label class="form-label" for="firstName">Password</label>
                                     <label class="forget-pass">Forgot Password?</label>
                             </div>
                          
