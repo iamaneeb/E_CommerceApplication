@@ -25,10 +25,15 @@
                     <span class="cart-no">{{cart_counter}}</span>
                 </span></div>
             </a>
-            
+        {% if request.user.is_authenticated %}
+        <div>
+           <a href="{%url 'logout'%}"><p>Logout</p></a> 
+        </div>
+        {% else %}
           <a href="{%url 'register' %}"> <div class="login-icon"><span class="material-symbols-outlined">
                 person
                 </span></div></a>
+        {% endif %}
             
         </div>
     </div>

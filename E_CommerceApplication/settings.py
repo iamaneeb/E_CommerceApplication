@@ -136,4 +136,14 @@ MESSAGE_TAGS = {
     messages.ERROR: "danger",
 }
 
+#SMTP confirmation
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'bluetar74@gmail.com'  # Your Gmail email address
+EMAIL_HOST_PASSWORD = 'kpdu zhtq toec dhht'  # Use the app password here
+
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
