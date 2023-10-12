@@ -16,6 +16,10 @@ urlpatterns = [
     path('login',views.Login,name="login"),
     path('logout',views.Logout,name='logout'),
     path('activate/<uidb64>/<token>/',views.Activate,name='activate'),
+    path('forgetpassword',views.ForgetPassword,name="forgetpassword"),
+    path('password_reset_confirm/<uidb64>/<token>/',views.Password_reset_verificaion,name="password_reset_confirm"),
+    path('resetpassword',views.Resetpassword,name="resetpassword"),
+
 
 
     
