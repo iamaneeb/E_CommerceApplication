@@ -248,3 +248,22 @@ def Store(request):
     return render(request,'base/products.html',{"products":products})
 
 
+def Checkout(request,total=0,quantity=0,cart_items=None):
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        for cart_item in cart_items:
+            total += (cart_item.product.newprice * cart_item.quantity)  
+            quantity += cart_item.quantity
+    except Cart.DoesNotExist:
+        pass          
+    except CartItem.DoesNotExist:
+        pass
+
+    
+    context = {
+        'total' : total,
+        'quantity':quantity,
+        'cart_items':cart_items,
+    }
+    return render(request,'base/checkout.html',context)
