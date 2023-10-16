@@ -1,166 +1,229 @@
-{% extends "base/main.html" %}
-{% block content %}
-<section class="cart-section h-100 h-custom" >
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12">
-          <div
-            class="card card-registration card-registration-2"
-            style="border-radius: 15px"
-               >
-            <div class="card-body p-0">
-              <div class="row g-0">
-                <div class="col-lg-6">
-                  <div class="p-5">
-                    <div
-                      class="d-flex justify-content-between align-items-center mb-5"
-                    >
-                      <h2 class=" pt-2 text-center fw-bold text-uppercase">Billing Address</h2>
-                    </div>
-                    <hr class="my-4" />
-                    {% comment %} form address {% endcomment %}
-                    <div class="card-body p-4 p-md-5">
-                      {% include "base/error-message.html" %}
-                      <form action="{% url 'register' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="row">
-                          <div class="col-md-6 mb-4">
-          
-                            <div class="form-outline">
-                              <input type="text" id="firstName" class="form-control form-control-lg" />
-                              <label class="form-label" for="firstName">First Name</label>
-                            </div>
-          
-                          </div>
-                          <div class="col-md-6 mb-4">
-          
-                            <div class="form-outline">
-                              <input type="text" id="firstName" class="form-control form-control-lg" />
-                              <label class="form-label" for="lastName">Last Name</label>
-                            </div>
-          
+{% extends "base/main.html" %} {% block content %}
+<section class="cart-section h-100 h-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div
+          class="card card-registration card-registration-2"
+          style="border-radius: 15px"
+        >
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <div class="p-3">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3 ml-5"
+                  >
+                    <h2 class="pt-2 pl=2 text-center fw-bold text-uppercase">
+                      Billing Address
+                    </h2>
+                  </div>
+                  <hr class="my-0" />
+                  {% comment %} form address {% endcomment %}
+                  <div class="card-body p-2 p-md-5">
+                    {% include "base/error-message.html" %}
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                      <div class="row">
+                        <div class="col-lg-6 mb-2">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="firstName"
+                              class="form-control form-control-lg w-100"
+                              name="firstName"
+                            />
+                            <label class="form-label" for="firstName"
+                              >First Name</label
+                            >
                           </div>
                         </div>
-          
-                        <div class="row">
-                          <div class="col-md-6 mb-4 d-flex align-items-center">
-          
-                            <div class="form-outline datepicker w-100">
-                              <input type="text" id="firstName" class="form-control form-control-lg" />
-                              <label for="birthdayDate" class="form-label">Username</label>
-                            </div>
-          
-                          </div>
-                          <div class="col-md-6 mb-4 d-flex align-items-center">
-          
-                            <div class="form-outline datepicker w-100">
-                              <input type="text" id="firstName" class="form-control form-control-lg" />
-                              <label for="birthdayDate" class="form-label">Email</label>
-                             <p class="error-register">{{form.email.errors}}</p> 
-                            </div>
-          
-                          </div>
-                         
-                        </div>
-          
-                        <div class="row">
-                          <div class="col-md-6 mb-4 pb-2">
-          
-                            <div class="form-outline">
-                              <input type="text" id="firstName" class="form-control form-control-lg" />
-                              <label class="form-label" for="emailAddress">Phone Number</label>
-                            </div>
-          
-                          </div>
-                          <div class="col-md-6 mb-4 pb-2">
-          
-                            <div class="form-outline">
-                              <input type="text" id="firstName" class="form-control form-control-lg" />
-                              <label class="form-label" for="phoneNumber">Password</label>
-                            </div>
-          
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="lastName"
+                              class="form-control form-control-lg"
+                              name="lastName"
+                            />
+                            <label class="form-label" for="lastName"
+                              >Last Name</label
+                            >
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-md-6 mb-4 pb-2">
-          
-                            <div class="form-outline">
-                              <input type="text" id="firstName" class="form-control form-control-lg" />
-                              <label class="form-label" for="phoneNumber">Repeat Password</label>
-                             <p class="error-register">{{form.non_field_errors}}</p> 
-                            </div> 
-                       
-          
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+                          <div class="form-outline">
+                            <input
+                              type="email"
+                              id="email"
+                              class="form-control form-control-lg"
+                              name="email"
+                            />
+                            <label for="email" class="form-label">Email</label>
                           </div>
                         </div>
-                          
-                      </form>
-                    </div>
-                    <div class="back pt-5">
-                      <h6 class="mb-0">
-                        <a href="{% url 'cart' %}" class="text-body"
-                          >
-                          <div><i class="fas fa-long-arrow-alt-left me-2"></i></div>
-                         <div>Back to cart</div> 
-                          
-                          </a
-                        >
-                      </h6>
-                    </div>
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+                          <div class="form-outline">
+                            <input
+                              type="tel"
+                              id="phoneNumber"
+                              class="form-control form-control-lg"
+                              name="phoneNumber"
+                            />
+                            <label for="phoneNumber" class="form-label"
+                              >Phone Number</label
+                            >
+                            <p class="error-register">
+                              {{ form.phoneNumber.errors }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="addressLine1"
+                              class="form-control form-control-lg"
+                              name="addressLine1"
+                            />
+                            <label class="form-label" for="addressLine1"
+                              >Address Line 1</label
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="addressLine2"
+                              class="form-control form-control-lg"
+                              name="addressLine2"
+                            />
+                            <label class="form-label" for="addressLine2"
+                              >Address Line 2</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="country"
+                              class="form-control form-control-lg"
+                              name="country"
+                            />
+                            <label class="form-label" for="country"
+                              >Country</label
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="city"
+                              class="form-control form-control-lg"
+                              name="city"
+                            />
+                            <label class="form-label" for="city">City</label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input
+                              type="text"
+                              id="state"
+                              class="form-control form-control-lg"
+                              name="state"
+                            />
+                            <label class="form-label" for="state">State</label>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="back pt-2 pl-5 pb-5">
+                    <h6 class="mb-0">
+                      <a href="{% url 'cart' %}" class="text-body">
+                        <div>
+                          <i class="fas fa-long-arrow-alt-left me-2"></i>
+                        </div>
+                        <div>Back to cart</div>
+                      </a>
+                    </h6>
                   </div>
                 </div>
-                <div class="col-lg-6 bg-grey">
-                  <div class="p-5">
-                    <h3 class="fw-bold mb-5 mt-2 pt-1">Products</h3>
-                    <hr class="my-4" />
-                    {% for cart_item in cart_items %}
-                  
-                    <div
-                      class="row mb-4 d-flex justify-content-between align-items-center"
-                    >
-                      <div class="img-box col-md-2 col-lg-2 col-xl-2">
-                        <img
-                          src="{{cart_item.product.prod_img.url}}"
-                          class="img-fluid rounded-3"
-                          alt="Cotton T-shirt"
-                        />
-                      </div>
-                      <div class="col-md-3 col-lg-3 col-xl-3">
-                        <a href="{{ cart_item.product.get_url }}"><h6 class="text-black mb-0">
+              </div>
+              <div class="col-lg-6 bg-grey">
+                <div class="p-5">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Products</h3>
+                  <hr class="my-4" />
+                  {% for cart_item in cart_items %}
+
+                  <div
+                    class="row mb-4 d-flex justify-content-between align-items-center"
+                  >
+                    <div class="img-box col-md-2 col-lg-2 col-xl-2">
+                      <img
+                        src="{{cart_item.product.prod_img.url}}"
+                        class="img-fluid rounded-3"
+                        alt="Cotton T-shirt"
+                      />
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                      <a href="{{ cart_item.product.get_url }}"
+                        ><h6 class="text-black mb-0">
                           {{cart_item.product.product_name}}
-                        </h6></a>
-                      </div>
-                      <div class="cart-quantity_btn">
-                        <input type="text" disabled  id="form1" min="0" name="quantity" value="{{cart_item.quantity}}"> 
-                      </div> 
-                      <div class="col-md-3 col-lg-4 col-xl-3 offset-lg-1">
-                        <h6 class="mb-0">₹{{cart_item.sub_total}}</h6>
-                      </div>
-                     
+                        </h6></a
+                      >
                     </div>
-                    <hr class="my-4" />
-                    {% endfor %}
-                    <div class="d-flex justify-content-between mb-4">
-                      <h5 class="text-uppercase">Total price</h5>
-                      <h5>₹ {{total}}</h5>
+                    <div class="cart-quantity_btn">
+                      <input
+                        type="text"
+                        disabled
+                        id="form1"
+                        min="0"
+                        name="quantity"
+                        value="{{cart_item.quantity}}"
+                      />
                     </div>
-  
-                    <hr class="my-4" />
-                    <a href="#"><button
-                      type="button"
+                    <div class="col-md-3 col-lg-4 col-xl-3 offset-lg-1">
+                      <h6 class="mb-0">₹{{cart_item.sub_total}}</h6>
+                    </div>
+                  </div>
+                  <hr class="my-4" />
+                  {% endfor %}
+                  <div class="d-flex justify-content-between mb-4 mr-4">
+                    <h5 class="text-uppercase">Total price</h5>
+                    <h5>₹ {{total}}</h5>
+                  </div>
+
+                  <hr class="my-4" />
+                  <a href="#"
+                    ><button
+                      type="submit"
                       class="btn btn-dark btn-block btn-lg"
                       data-mdb-ripple-color="dark"
                     >
                       Place Order
-                    </button></a><br>
-                    <a href="#"><button
-                        type="button"
-                        class="btn btn-red btn-block btn-lg"
-                        data-mdb-ripple-color="dark"
-                      >
-                        Continue Shopping
-                      </button></a>
-                  </div>
+                    </button></a
+                  ><br />
+                  <a href="{% url 'store' %}"
+                    ><button
+                      style="pointer-events: none"
+                      type="button"
+                      class="btn btn-red btn-block btn-lg"
+                      data-mdb-ripple-color="dark"
+                    >
+                      Continue Shopping
+                    </button></a
+                  >
+                </form>
                 </div>
               </div>
             </div>
@@ -168,5 +231,6 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 {% endblock content %}

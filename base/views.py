@@ -4,6 +4,7 @@ from django.db.models import Q
 from .form import RegistrationForm
 from django.contrib import auth,messages
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 # email verification
 from django.contrib.sites.shortcuts import get_current_site
@@ -53,6 +54,16 @@ def Login(request):
         password = request.POST["password"]
         user = auth.authenticate(email=email,password=password)
         if user is not None:
+            try:
+                cart = Cart.objects.get(cart_id=_cart_id(request))
+                is_cart_item_exists = CartItem.objects.filter(cart=cart).exists()
+                if is_cart_item_exists:
+                    cart_item = CartItem.objects.filter(cart=cart)
+                    for item in cart_item:
+                        item.user = user
+                        item.save()
+            except:
+                pass            
             auth.login(request,user)
             return redirect('home')
         else:
@@ -141,6 +152,8 @@ def Resetpassword(request):
             return redirect('resetpassword')
     else:    
         return render(request,'base/resetpassword.html')
+    
+
 def Home(request):
     categories = Category.objects.all()
     context = {"categories": categories}
@@ -157,6 +170,7 @@ def Products(request,category_slug=None):
         products = Product.objects.all()        
     context = {"products":products,}
     return render(request,'base/products.html',context)
+
 
 def Productdetails(request,product_slug,category_slug):
     pd = Product.objects.get(slug=product_slug)
@@ -247,7 +261,7 @@ def Store(request):
     products = Product.objects.order_by('-created_date')
     return render(request,'base/products.html',{"products":products})
 
-
+@login_required(login_url='login')
 def Checkout(request,total=0,quantity=0,cart_items=None):
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
