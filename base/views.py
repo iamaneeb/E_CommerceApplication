@@ -227,8 +227,11 @@ def delete_cart(request,product_id):
 
 def Cart_item(request,total=0,quantity=0,cart_items=None):
     try:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        if request.user.is_authenticated:
+            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+        else:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+            cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
             total += (cart_item.product.newprice * cart_item.quantity)  
             quantity += cart_item.quantity
