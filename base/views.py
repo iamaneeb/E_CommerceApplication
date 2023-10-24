@@ -5,6 +5,7 @@ from .form import RegistrationForm
 from django.contrib import auth,messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+import requests
 
 # email verification
 from django.contrib.sites.shortcuts import get_current_site
@@ -73,7 +74,17 @@ def Login(request):
             except:
                 pass            
             auth.login(request,user)
-            return redirect('home')
+            #to get the url
+            url = request.META.get('HTTP_REFERER')
+            try:
+                query = requests.utils.urlparse(url).query
+                params = dict(x.split('=') for x in query.split('&'))
+                print(params)
+                if 'next' in params:
+                    nextPage = params['next']
+                    return redirect(nextPage)
+            except:
+                return redirect('home')
         else:
             messages.error(request,"Invalid login credentials")
             return redirect('login')
@@ -308,8 +319,11 @@ def Store(request):
 @login_required(login_url='login')
 def Checkout(request,total=0,quantity=0,cart_items=None):
     try:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        if request.user.is_authenticated:
+            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+        else:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+            cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
             total += (cart_item.product.newprice * cart_item.quantity)  
             quantity += cart_item.quantity

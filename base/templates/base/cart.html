@@ -3,7 +3,7 @@
 <div class="empty-cart">
   <hr>
   <h2>Your Shopping Cart is Empty</h2>
-  <a href="{% url 'home' %}"><button type="button" class="btn btn-primary">Continue Shopping</button></a>
+  <a href="{% url 'store' %}"><button type="button" class="btn btn-primary">Continue Shopping</button></a>
 </div>
 {% else %}
 <section class="cart-section h-100 h-custom" >
@@ -47,7 +47,7 @@
                       onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                       <i class="fas fa-minus"></i>
                     </a>
-                      <input type="number"  id="form1" min="0" name="quantity" value="{{cart_item.quantity}}"> 
+                      <input type="number" disabled  id="form1" min="0" name="quantity" value="{{cart_item.quantity}}"> 
                       <a href="{% url 'add-cart' cart_item.product.id %}" class="btn btn-link px-2"
                       onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                       <i class="fas fa-plus"></i>
