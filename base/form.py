@@ -1,5 +1,5 @@
 from django import forms
-from .models import Account
+from .models import Account,Order
 
 class RegistrationForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput())
@@ -24,3 +24,10 @@ class RegistrationForm(forms.ModelForm):
         super(RegistrationForm , self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control form-control-lg'
+
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['first_name','last_name','email','phone','address_line_1','address_line_2','country','state','city']

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Category,Account,Product,Cart,CartItem
+from .models import Category,Account,Product,Cart,CartItem,Payment,Order,OrderProduct
 
 
 class AccountAdmin(UserAdmin):
@@ -32,4 +32,8 @@ admin.site.register(Account,AccountAdmin)
 admin.site.register(Product,ProductAdmin) 
 admin.site.register(Cart)
 admin.site.register(CartItem)
+admin.site.register(OrderProduct)
+admin.site.register(Order)
+admin.site.register(Payment)
+
 
