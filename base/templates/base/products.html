@@ -1,27 +1,23 @@
 {% extends 'base/main.html' %} {% load static %} {% block content %}
 <div class="product-container">
-{% if products %}
-  {% for product in products %}
+  {% if products %} {% for product in products %}
   <div class="items">
     <a href="{{ product.get_url }}">
       <div class="item-img">
         <img src="{{product.prod_img.url}}" alt="" />
       </div>
-        <div class="item-details">
-          <p>
-            {{product.product_name}}<br />
-            <small
-              ><span>₹{{product.oldprice}}</span>₹{{product.newprice}}</small
-            >
-          </p>
-        </div>
-      </a>
+      <div class="item-details">
+        <p>
+          {{product.product_name}}<br />
+          <small><span>₹{{product.oldprice}}</span>₹{{product.newprice}}</small>
+        </p>
       </div>
-  {% endfor %}
-  {% else %}
+    </a>
+  </div>
+  {% endfor %} {% else %}
   <div class="false-search">
     <h1>no result found, please try again</h1>
   </div>
-{% endif %} 
+  {% endif %}
 </div>
 {% include 'base/footer.html' %} {% endblock content %}

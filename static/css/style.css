@@ -584,4 +584,8 @@ top: 13px;
     display: none;
 }
 
-/* checkout */
+/* Payment */
+
+.card-body p{
+    margin-bottom: 0rem;
+}

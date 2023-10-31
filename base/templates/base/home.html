@@ -1,24 +1,22 @@
-{% extends 'base/main.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base/main.html' %} {% load static %} {% block content %}
 <div class="home-container">
-    {% include 'base/slider.html' %}
-    <div class="treading-products">
-        <div class="treading-product">
-            <div class="heading">
-            <h1>Trending <span>Products</span></h1>
-            </div>
-            <div class="products">
-                {% for category in categories  %}
-               <a href="{{category.slug}}"> <div class="product-img">
-                    <img src="{{category.cat_image.url}}" alt="">
-                </div></a>
-                {% endfor %}
-            </div>
-            
-        </div>
+  {% include 'base/slider.html' %}
+  <div class="treading-products">
+    <div class="treading-product">
+      <div class="heading">
+        <h1>Trending <span>Products</span></h1>
+      </div>
+      <div class="products">
+        {% for category in categories %}
+        <a href="{{category.slug}}">
+          <div class="product-img">
+            <img src="{{category.cat_image.url}}" alt="" /></div
+        ></a>
+        {% endfor %}
+      </div>
     </div>
-    {% include 'base/footer.html' %}
+  </div>
+  {% include 'base/footer.html' %}
 </div>
 
 {% endblock content %}
