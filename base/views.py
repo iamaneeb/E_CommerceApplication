@@ -401,14 +401,22 @@ def Checkout(request, total=0, quantity=0, cart_items=None):
     ########## ORDER ####################
 
 
-def Payment(request, total=0):
+def Payment(request, total=0,quantity=0):
     current_user = request.user
     cart_items = CartItem.objects.filter(user=current_user)
     for cart_item in cart_items:
             total += cart_item.product.newprice * cart_item.quantity
-    order_data = Order.objects.all()
-    print(order_data)
-    context =  {"total":total,"order_data":order_data}
+            quantity += cart_item.quantity
+    if 'order_data' in request.session:
+        order_data = request.session['order_data']
+        order_number = order_data.get('order_number')  # Get the total from the stored data 
+    order = Order.objects.get(user=current_user,order_number=order_number,is_ordered=False)
+    context={
+                    "order":order,
+                    "total":total,
+                    "cart_items":cart_items,
+                    "quantity": quantity,
+                }
     return render(request, "base/payment.html",context)
 
 
@@ -449,18 +457,20 @@ def Place_order(request, total=0, quantity=0, cart_items=None):
                 order_number = current_date + str(data.id)
                 data.order_number = order_number
                 data.save()
-                order = Order.objects.get(user=current_user,order_number=order_number,is_ordered=False)
-                context={
-                    "order":order,
-                    "total":total,
-                    "cart_items":cart_items,
-                    "quantity": quantity,
-                }
-                return render(request,"base/payment.html",context)
+                # order = Order.objects.get(user=current_user,order_number=order_number,is_ordered=False)
+                # context={
+                #     "order":order,
+                #     "total":total,
+                #     "cart_items":cart_items,
+                #     "quantity": quantity,
+                # }
+                request.session['order_data'] = {
+                        'order_number': order_number,
+    # Other relevant data you want to pass
+                                }
+                return redirect("payment")
             else:
-                for field, errors in form.errors.items():
-                    for error in errors:
-                        messages.error(request, f"Error in {field}: {error}")
+                messages.error(request, "Fill the form")
                 context = {
                     "total": total,
                     "quantity": quantity,

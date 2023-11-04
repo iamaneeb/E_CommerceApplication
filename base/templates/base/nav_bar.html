@@ -8,7 +8,7 @@
             <ul>
                 <a href="{% url 'home' %}"><li>HOME</li></a>
                 <a href="{% url 'store' %}"><li>STORE</li></a> 
-                <a href="https://www.instagram.com/cocainjesus_/"><li>CONTACT</li></a>
+                <a href="#contact"><li>CONTACT</li></a>
              
             </ul>
         </div>
@@ -26,8 +26,9 @@
                 </span></div>
             </a>
         {% if request.user.is_authenticated %}
-        <div>
-           <a href="{%url 'logout'%}"><p>Logout</p></a> 
+        <div class="user_auth">
+           <a href="#"><p>welcome <br>{{request.user.username}}</p></a> 
+           <a href="{%url 'logout'%}"><p style="text-decoration:underline;">Logout</p></a> 
         </div>
         {% else %}
           <a href="{%url 'register' %}"> <div class="login-icon"><span class="material-symbols-outlined">
