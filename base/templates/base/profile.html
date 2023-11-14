@@ -1,0 +1,11 @@
+{% extends "base/main.html" %}
+{% block content %}
+<center>
+    <div style="margin: 15rem 0rem; font-weight:bold">
+        <h1>Hi {{request.user.username}},
+    Welcome to COCCAINJUSIS</h1>  
+    <a  href="{% url 'logout' %}"><button style="margin-top:2rem;" type="button" class="btn btn-info">Logout</button></a>
+    </div>
+    
+</center>
+{% endblock content %}

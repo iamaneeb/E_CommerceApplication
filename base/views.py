@@ -484,3 +484,7 @@ def Place_order(request, total=0, quantity=0, cart_items=None):
                     "cart_items": cart_items,
                 }
             return render(request, "base/checkout.html",context)
+
+
+def Profile(request):
+    return render(request, "base/profile.html")

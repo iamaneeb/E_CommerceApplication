@@ -32,4 +32,5 @@ urlpatterns = [
     ########## ORDER ##########
     path("cart/place_order", views.Place_order, name="place_order"),
     path("cart/payment", views.Payment, name="payment"),
+    path("profile", views.Profile,name="profile")
 ]

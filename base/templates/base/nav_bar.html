@@ -26,10 +26,11 @@
                 </span></div>
             </a>
         {% if request.user.is_authenticated %}
-        <div class="user_auth">
-           <a href="#"><p>welcome <br>{{request.user.username}}</p></a> 
-           <a href="{%url 'logout'%}"><p style="text-decoration:underline;">Logout</p></a> 
-        </div>
+        <a href="{% url 'profile' %}"><div class="header__user">
+              <div class="avatar avatar--medium">
+                <img src="https://www.wallpaperup.com/uploads/wallpapers/2023/05/18/1423142/a40c293bc72d87c0d3fc1f9b3352202b-700.jpg" />
+              </div>
+          </div></a>
         {% else %}
           <a href="{%url 'register' %}"> <div class="login-icon"><span class="material-symbols-outlined">
                 person
