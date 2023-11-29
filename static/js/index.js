@@ -44,3 +44,8 @@ function Hide(){
     var mess =document.getElementById('message').classList;
     mess.add('hide_message');
 }
+
+function togglefuntion() {
+    var gettingthemenuid = document.getElementById("menuscrollid");
+    gettingthemenuid.classList.toggle("menushow");
+}

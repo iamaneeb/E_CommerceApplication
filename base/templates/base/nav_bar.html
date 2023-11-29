@@ -1,7 +1,14 @@
+{% load static %}
 <header>
+
+    <script src="{% static 'js/index.js' %}"></script>
     <div class="header-container">
         <a href="{% url 'home' %}"><div class="log">
             <h1>COCAINJESUS</h1>
+        </div>
+        </a>
+        <a href="{% url 'home' %}"><div class="second-log">
+            <h1>CJ</h1>
         </div>
         </a>
         <div class="nav-list">
@@ -19,6 +26,21 @@
                     <input type="text" name='q' class="form-control" placeholder="Search COCAINJESUS">
                   </div>
             </form>
+            <div class="menu-down">
+            <span onclick="togglefuntion()" class="material-symbols-outlined" >
+                menu
+                </span>
+            </div>
+            <div class="menu-scroll-wrapper ">
+                <div class="menu-scroll" id="menuscrollid">
+                    <ul>
+                        <a href="{% url 'home' %}"><li>HOME</li></a>
+                        <a href="{% url 'store' %}"><li>STORE</li></a> 
+                        <a href="#contact"><li>CONTACT</li></a>
+                        
+                    </ul>
+                </div>
+            </div>
             <a href="{% url 'cart' %}">
                 <div class="cart-icon"> <span class="material-symbols-outlined">
                     shopping_bag
@@ -33,9 +55,9 @@
           </div></a>
         {% else %}
           <a href="{%url 'register' %}"> <div class="login-icon"><span class="material-symbols-outlined">
-                person
-                </span></div></a>
-        {% endif %}
+              person
+            </span></div></a>
+            {% endif %}
             
         </div>
     </div>
