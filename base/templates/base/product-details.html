@@ -15,15 +15,9 @@
             src="{{pd.prod_img.url}}"
             alt=""
           />
-          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
-          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
-          <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="" />
-          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
-          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
-          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
-          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
-          <img class="thumbnail" src="{%static 'images/hoodies.jpg'%}" alt="" />
-          <img class="thumbnail" src="{%static 'images/hoodie1.jpg'%}" alt="" />
+          {% for image in imagegalley  %}
+          <img class="thumbnail" src="{{image.url}}" alt="" />
+          {% endfor %}
         </div>
         <i id="button-right" class="fa-solid fa-circle-arrow-right arrow"></i>
       </div> 

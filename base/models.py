@@ -105,6 +105,18 @@ class Product(models.Model):
         return reverse("product_details", args=[self.category.slug, self.slug])
 
 
+class ProductGallery(models.Model):
+    product = models.ForeignKey(Product , on_delete=models.CASCADE, default=None)
+    image = models.ImageField(upload_to="photos/products",max_length=225)
+
+    def __str__(self):
+        return self.product.product_name
+    
+    class Meta:
+        verbose_name = 'productgallery'
+        verbose_name_plural = 'product gallery'
+
+
 class Cart(models.Model):
     cart_id = models.CharField(max_length=250, blank=True)
     date_added = models.DateField(auto_now_add=True)

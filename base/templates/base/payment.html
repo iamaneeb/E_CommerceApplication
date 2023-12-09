@@ -5,43 +5,38 @@
       <div class="col-12">
         <div
           class="card card-registration card-registration-2"
-          style="border-radius: 15px">
-        
+          style="border-radius: 15px"
+        >
           <div class="card-body p-0">
             <div class="row g-0">
               <div class="col-lg-8">
-                <div >
+                <div>
                   <div
-                    class="d-grid justify-content-between align-items-center mb-2 ">
-                  
-            
-                    <div class=" col-lg-12 ">
+                    class="d-grid justify-content-between align-items-center mb-2"
+                  >
+                    <div class="col-lg-12">
                       <div class="card-body">
-                        <h5 class="card-title ">Billing Address</h5>
-                        <hr>
+                        <h5 class="card-title">Billing Address</h5>
+                        <hr />
                         <p>{{order.getfullname}}</p>
                         <p>{{order.getfulladdress}}</p>
-                        <p>{{order.city}},{{dorderta.state}}</p>
+                        <p>{{order.city}},{{order.state}}</p>
                         <p>{{order.email}}</p>
                         <p>{{order.phone}}</p>
                       </div>
                     </div>
-                    <div class=" col-lg-12">
+                    <div class="col-lg-12">
                       <div class="card-body">
                         <h5 class="card-title">Payment Method</h5>
-                        <hr>
+                        <hr />
                         <p class="card-text">Paypal</p>
-          
                       </div>
                     </div>
-                  
-
-
 
                     <div class="col-lg-12">
                       <div class="card-body">
                         <h5 class="card-title">Review Products</h5>
-                        <hr>
+                        <hr />
                         {% for cart_item in cart_items %}
                         <div
                           class="row mb-4 d-flex justify-content-between align-items-center"
@@ -54,9 +49,9 @@
                             />
                           </div>
                           <div class="col-md-3 col-lg-3 col-xl-3">
-                           <h6 class="text-black mb-0">
-                                {{cart_item.product.product_name}}
-                              </h6>
+                            <h6 class="text-black mb-0">
+                              {{cart_item.product.product_name}}
+                            </h6>
                           </div>
                           <div class="cart-quantity_btn">
                             <input
@@ -76,14 +71,7 @@
                         {% endfor %}
                       </div>
                     </div>
-
-
-
-
-
-
                   </div>
-               
                 </div>
               </div>
               <div class="col-lg-4 bg-grey">
@@ -91,39 +79,33 @@
                   <h3 class="fw-bold mb-5 mt-2 pt-1">Products</h3>
                   <hr class="my-4" />
 
-             
                   <div class="d-flex justify-content-between mb-4 mr-4">
                     <h5 class="text-uppercase">Total price</h5>
                     <h5>₹ {{total}}</h5>
                   </div>
 
                   <hr class="my-4" />
-                  <div id="paypal-button-container">
-                    {% comment %} paypal button will load here {% endcomment %}
-                  </div>
+                  <div id="paypal-button-container"></div>
                 </div>
-             
               </div>
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   </div>
 </section>
-
 <script>
   // Render the PayPal button into #paypal-button-container
   paypal.Buttons({
 
-        style: {
+      style: {
           color:  'blue',
           shape:  'pill',
           label:  'pay',
           height: 40
       },
-
+      
       // Call your server to set up the transaction
       createOrder: function(data, actions) {
           return fetch('/demo/checkout/api/paypal/order/create/', {
@@ -178,6 +160,4 @@
 
   }).render('#paypal-button-container');
 </script>
-
-
 {% endblock content %}

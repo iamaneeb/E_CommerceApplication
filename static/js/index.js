@@ -26,19 +26,19 @@ Buttonright.addEventListener('click',function(){
 })
 
 
-// document.getElementById('registrationForm').addEventListener('submit', function (event) {
-//     event.preventDefault(); // Prevent the default form submission behavior
+document.getElementById('registrationForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission behavior
 
-//     // Use the reset() function to clear all input fields in the form
-//     const form = document.getElementById('registrationForm');
-//     form.reset();
+    // Use the reset() function to clear all input fields in the form
+    const form = document.getElementById('registrationForm');
+    form.reset();
 
-//     // Now you can submit the form
-//   });
+    // Now you can submit the form
+  });
 
-// setTimeout(function() {
-//     $('#message').fadeIn('slow')
-// }, 4000);
+setTimeout(function() {
+    $('#message').fadeIn('slow')
+}, 4000);
 
 function Hide(){
     var mess =document.getElementById('message').classList;
