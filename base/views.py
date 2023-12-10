@@ -9,6 +9,7 @@ from .models import (
     OrderProduct,
     Payment,
     ProductGallery,
+    ProductFeature
 )
 from django.db.models import Q
 from .form import RegistrationForm, OrderForm
@@ -228,6 +229,7 @@ def Products(request, category_slug=None):
 def Productdetails(request, product_slug, category_slug):
     pd = Product.objects.get(slug=product_slug)
     imagegallery = ProductGallery.objects.filter(product_id=pd.id)
+    keyFeatures = ProductFeature.objects.filter(product_id=pd.id)
     cart_prod = CartItem.objects.filter(
         cart__cart_id=_cart_id(request), product=pd
     ).exists()
@@ -237,7 +239,8 @@ def Productdetails(request, product_slug, category_slug):
         {
             "pd": pd,
             "cart_prod": cart_prod,
-            "imagegalley" : imagegallery
+            "imagegalley" : imagegallery,
+            "keyFeatures" : keyFeatures
         },
     )
 

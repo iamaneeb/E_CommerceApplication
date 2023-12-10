@@ -16,7 +16,7 @@
             alt=""
           />
           {% for image in imagegalley  %}
-          <img class="thumbnail" src="{{image.url}}" alt="" />
+          <img class="thumbnail"  src="{{image.image.url}}" alt="" />
           {% endfor %}
         </div>
         <i id="button-right" class="fa-solid fa-circle-arrow-right arrow"></i>
@@ -26,11 +26,14 @@
       <h1>{{pd.product_name}}</h1>
       <hr>
       <p class="desc">{{pd.description}}</p>
-
+      {% if keyFeatures %}
          <p>Key Features:</p>
       <ul>
-        <li>{{pd.feature}}</li>
-        </ul> 
+        {% for keyFeature in keyFeatures  %}
+        <li>{{keyFeature.list}}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} 
         {% if pd.is_available == 'In Stock' %}
         <p class="green-text">{{ pd.is_available }}</p>
         {% elif pd.is_available == 'Out of Stock' %}

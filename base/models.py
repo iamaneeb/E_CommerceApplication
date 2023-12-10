@@ -104,6 +104,13 @@ class Product(models.Model):
     def get_url(self):
         return reverse("product_details", args=[self.category.slug, self.slug])
 
+class ProductFeature(models.Model):
+    product = models.ForeignKey(Product , on_delete=models.CASCADE, default=None)
+    list = models.CharField(max_length=300,blank=True)
+
+    def __str__(self):
+        return self.product.product_name
+
 
 class ProductGallery(models.Model):
     product = models.ForeignKey(Product , on_delete=models.CASCADE, default=None)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Category,Account,Product,Cart,CartItem,Payment,Order,OrderProduct,ProductGallery
+from .models import Category,Account,Product,Cart,CartItem,Payment,Order,OrderProduct,ProductGallery,ProductFeature
 import admin_thumbnails
 
 
@@ -27,11 +27,16 @@ class ProductGalleryInline(admin.TabularInline):
     #you can add extra image 
     extra = 1
 
+
+class ProductListInline(admin.TabularInline):
+    model = ProductFeature
+    extra = 1
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('product_name','newprice','category','created_date')
     prepopulated_fields = {'slug':('product_name',)}
     #to see the productgallery in product 
-    inlines = [ProductGalleryInline]
+    inlines = [ProductGalleryInline,ProductListInline]
 
 
 
