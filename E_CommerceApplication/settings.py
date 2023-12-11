@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j=m_$$!2y^kl@2)&%gw!@%ewkkyir9kq(z@-dpv90_-ke$u+1p'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True , cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -138,11 +139,11 @@ MESSAGE_TAGS = {
 
 #SMTP confirmation
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'bluetar74@gmail.com'  # Your Gmail email address
-EMAIL_HOST_PASSWORD = 'kpdu zhtq toec dhht'  # Use the app password here
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS',cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')  # Your Gmail email address
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')  # Use the app password here
 
 
 
