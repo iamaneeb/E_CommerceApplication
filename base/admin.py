@@ -15,7 +15,6 @@ class AccountAdmin(UserAdmin):
     list_filter = ()
     fieldsets = ()
 
-
 class CategoryAdmin(admin.ModelAdmin):
     #its for to auto write the slug whatever typing in the category_name
     prepopulated_fields = {'slug':('category_name',)}
@@ -31,6 +30,10 @@ class ProductGalleryInline(admin.TabularInline):
 class ProductListInline(admin.TabularInline):
     model = ProductFeature
     extra = 1
+
+
+
+
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('product_name','newprice','category','created_date')
@@ -50,6 +53,7 @@ admin.site.register(OrderProduct)
 admin.site.register(Order)
 admin.site.register(Payment)
 admin.site.register(ProductGallery)
+
 
 
 

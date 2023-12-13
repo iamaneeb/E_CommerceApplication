@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 })
 
-document.addEventListener('DOMContentLoaded', function () {
+
     setTimeout(function () {
         $('#message').fadeIn('slow')
     }, 4000);
@@ -50,8 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
         mess.add('hide_message');
     }
     
-})
 function togglefuntion() {
     var gettingthemenuid = document.getElementById("menuscrollid");
     gettingthemenuid.classList.toggle("menushow");
 }
+
+// slide image\
